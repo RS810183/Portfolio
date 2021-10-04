@@ -45,7 +45,7 @@
 
 
 		#menuToggle input {
-			display: flex;
+			display: block;
 			width: 40px;
 			height: 32px;
 			position: absolute;
@@ -120,7 +120,7 @@
 
 
 			transform-origin: 0% 0%;
-			transform: translate(-100%, -0%);
+			transform: translate(-100%, 0);
 
 			transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 		}
@@ -130,14 +130,12 @@
 			font-size: 22px;
 		}
 
-		
-
 
 		#menuToggle input:checked~ul {
 			transform: none;
 		}
 
-		
+
 
 
 
@@ -147,7 +145,7 @@
 		}
 
 
-		#button {
+		#button{
 			border: none;
 			background-color: inherit;
 			position: absolute;
@@ -159,9 +157,9 @@
 			display: inline-block;
 			font-family: 'Rajdhani', sans-serif;
 			color: blue;
-		}
 
-		
+
+		}
 	</style>
 	<link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
 </head>
@@ -186,7 +184,7 @@
     <ul id="menu">
       <a href="index.html"><li>Home</li></a>
       <a href="AboutMe.html"><li>About Me</li></a>
-      <a href="DeepThoughts.html"><li>Deep Thoughts</li></a>
+      <a href="DeepThoughts.html"><li>Deep Thoughts</li></a>      
       <a href="MyProjects.html"><li>My Projects</li></a>
     </ul>
   </div>
@@ -194,9 +192,9 @@
 	</header>
 	<div class="text">
 		<h1 id="Home">
-			Raunit's Computer Science Portfolio. Click About Me to learn more About Me.
-		</h1>	
+			Deep Thoughts
+		</h1>
+        <p id="text"></p>
 	</div>
-	<a id="button" href="AboutMe.html">About Me</a>
   </body>
 </html>
