@@ -1,6 +1,6 @@
+<script>
 function setup() {
   var canvas = createCanvas(650, 300);
-  console.log("got here");
   canvas.parent("pong-container");
 }
 let x = 300;
