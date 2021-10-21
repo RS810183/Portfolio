@@ -202,7 +202,7 @@
 	<script src="https://toolness.github.io/p5.js-widget/p5-widget.js">
 
 	</script>
-	<script src="pong.js">
+	<script src="rs.js">
 
 	</script>
 </head>
@@ -231,99 +231,58 @@
 	</header>
 	<div class="text">
 		<h1 id="Home">
-			Pong
+			Scale Project
 		</h1>
         <div>
             <script type="text/p5" data-height="500" data-autoplay data-preview-width="650">   
 function setup() {
-  var canvas = createCanvas(650, 300);
+  x = 600;
+  createCanvas(x, x);
 }
-let x = 300;
-let y = 200;
-let xspeed = 3;
-let yspeed = 1;
-let posX = 0;
-let posY = 0;
-let streakCounter = 0;
 
 function draw() {
   background(0);
+  var sqrSize = 55;
+  getRS();
 
-  streak();
-
-  move();
-
-  ellipse(x, y, 30);
-
-  bouncer();
-
-  paddle();
-
-  isOutOfBounds();
-
-  rect(0, posY, 10, 50);
-}
-
-function move() {
-  x += xspeed;
-  y += yspeed;
-}
-
-function mouseMoved() {
-  posY = mouseY;
-  if (posY > 300) {
-    posY = 300;
+} 
+function getRS(){
+  noFill();
+  stroke(255, 0, 0);
+  strokeWeight(x/50);
+  
+  let alpha_val = [];
+  for (let i = 0; i <= 150; i++) {
+    append(alpha_val, i / 150);
   }
-}
-
-function bouncer() {
-  if (x > width) {
-    xspeed = -xspeed;
+  
+  let colors = ['rgba(96, 60, 20,', 'rgba(156, 39, 6,', 'rgba(212, 91, 18,', 'rgba(243, 188, 46,', 'rgba(95, 84, 38,'];
+  
+  for (let i = 150; i > 0; i--) {
+    append(alpha_val, i / 150);
   }
-  if (y > height || y < 0) {
-    yspeed = -yspeed;
-  }
+  
+  stroke(colors[floor(frameCount / alpha_val.length) % 5] + str(alpha_val[frameCount % alpha_val.length]) + ')')
+  
+  
+  
+  triangle(x/4, x/8, x/2, x/4, x/5, x/2);
+  line(x/5, x/2, x/(400/65), x/(400/300));
+  line(x/5, x/2, x/(400/180), x/(400/300));
+  line(x/(400/180), x/(400/300), x/(400/350), x/4);
+  line(x/(400/350), x/4, x/(400/300), x/8);
+  line(x/(400/300), x/8, x/(400/250), x/4);
+  line(x/(400/250), x/4, x/(400/350), x/(400/250));
+  line(x/(400/350), x/(400/250), x/(400/300), x/(400/300));
+  line(x/(400/300), x/(400/300), x/2, x/2);
+  line(x/2, x/2, x, x/2);
 }
-
-function paddle() {
-  if (x < 10) {
-    if (posY <= y && posY + 50 >= y) {
-      xspeed = -xspeed;
-      xspeed++;
-      yspeed++;
-    }
-  }
-}
-
-function isOutOfBounds() {
-  if (x < 0) {
-    x = 300;
-    y = 200;
-    xspeed = 3;
-    yspeed = 1;
-  }
-}
-
-function streak() {
-  if (x < 10) {
-    if (posY <= y && posY + 50 >= y) {
-      streakCounter++;
-      console.log(streakCounter);
-    } else {
-      streakCounter = 0;
-      console.log("You lost your streak!");
-    }
-  }
-}
-
-
-
   
 </script>
 
         <div class="flexbox-container">
             <div class="flexbox-item-1">
-                This was my first computer science project called pong. It's quite simple. You move your mouse around to control to bar. Move the bar to where the ball is heading to hit the ball. Keep in mind, the more times you hit the ball, the faster the ball will go!
+                This is a project that I made in class. It shows my initials along with a fading color effect, with fall colors. The hardest part of this project would probably have been the fading color effect. I managed to figure out a general algorithm for it, then I tried to implement it in my code. 
             </div>
         </div>
     </div>

@@ -8,9 +8,6 @@
 	<link href="style.css" rel="stylesheet" type="text/css" />
 	<style>
 		body {
-			height: 125vh;
-			margin-top: 0px;
-			padding: 0px;
 			background-size: cover;
 			font-family: 'Rajdhani', sans-serif;
 			background: url("https://t4.ftcdn.net/jpg/03/49/32/49/360_F_349324929_njSnMgMDmmzYJtxFNuLkOnKr39IX2atg.jpg") no-repeat center center fixed;
@@ -110,8 +107,10 @@
 			position: absolute;
 			width: 1920px;
 			margin: -100px 0 0 -55px;
-			padding: 50px;
 			padding-top: 125px;
+            padding-left:50px;
+            padding-bottom:50px;
+
 
 
 			background: #ededed;
@@ -143,11 +142,11 @@
 			padding: 35px;
 			color: blue;
 		}
-        
-        
 
 
-		#button{
+
+
+		#button {
 			border: none;
 			background-color: inherit;
 			position: absolute;
@@ -160,9 +159,49 @@
 			font-family: 'Rajdhani', sans-serif;
 			color: blue;
 		}
-        #aboutmetext{
-           
-        }
+
+		.flexbox-container {
+			display: flex;
+			flex-direction: row;
+			gap: 30px;
+            justify-content: center;
+
+			/*cross (up down) axis*/
+			align-items: center;
+			/*align-items:stretch;*/
+			/*align-items:space-between;*/
+			/*align-items:space-around;*/
+			/*align-items:end;*/
+			/*align-items:space-evenly;*/
+		}
+
+		.flexbox img {
+			width: 300px;
+			height: 400px;
+
+		}
+
+		.flexbox-item {}
+
+		.flexbox-item-1 {
+			font-size: 29px;
+			font-weight: bold;
+			font-family: 'Rajdhani', sans-serif;
+			max-width: 650px;
+		}
+
+		.flexbox-item-2 {
+			font-family: 'Rajdhani', sans-serif;
+			font-size: 40px;
+			max-height: 400px;
+		}
+
+		.flexbox-item-3 {
+			min-height: 400px;
+			width: 300px;
+			font-size: 40px;
+			font-family: 'Rajdhani', sans-serif;
+		}
 	</style>
 	<link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
 </head>
@@ -197,7 +236,12 @@
 		<h1 id="Home">
 			About Me
 		</h1>
-        <h2 id="aboutmetext">Hello my name is Raunit Singh. I am a sophmore at Rosemount High School, and have been doing computer science for 2 years now. I am very interested in computer science. Outside of school I am on the debate team and the math team. I have also made multiple projects including an app and a pong game. To see these projects click on My Projets, at the bottom right of this page. Or use the menu, in the top left corner.</h2>
+        <div class="flexbox-container">
+            <div class="flexbox img">
+                <img src="picture.jpg"></img>
+            </div>
+        <h2 class="flexbox-item-1">Hello my name is Raunit Singh. I am a sophomore at Rosemount High School, and have been doing computer science for 2 years now and have experience in Java, JavaScript, HTML/CSS, and a little bit of Python. Outside of school I am on the debate team and the math team. I have also made multiple projects including an app and a pong game. To see these projects click on My Projets, at the bottom right of this page. Or use the menu, in the top left corner.</h2>
+        </div>
 	</div>
 	<a id="button" href="MyProjects.html">My Projects</a>
   </body>

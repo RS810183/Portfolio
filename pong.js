@@ -1,4 +1,3 @@
-<script>
 function setup() {
   var canvas = createCanvas(650, 300);
   canvas.parent("pong-container");
