@@ -231,58 +231,130 @@
 	</header>
 	<div class="text">
 		<h1 id="Home">
-			Scale Project
+			Dice
 		</h1>
         <div>
             <script type="text/p5" data-height="500" data-autoplay data-preview-width="650">   
+class Die {
+
+	x;
+	y;
+    z;
+	random;
+	totalScore = 0;
+
+	 constructor (x, y) {
+		this.x = x;
+		this.y = y;
+        this.z = 0;
+	}
+	
+	roll() {
+		random = (int)((Math.random() * 6) + 1);
+		this.totalScore += random;
+	}
+	
+	show (x, y) {
+		this.x = x;
+		this.y = y;
+		fill(0, 0, 100);
+		rect(x, y, 50, 50, 10);
+		fill(0);
+		this.roll();
+        colorMode(HSB);
+        let colorA = (int) ((Math.random() * 360) + 1);
+        let colorB = (int) ((Math.random() * 100) + 1);
+        let colorC = (int) ((Math.random() * 100) + 1);
+		if (random == 1) {
+			fill(colorA, colorB, colorC);
+			ellipse(x + 25, y + 25, 10, 10);
+		}
+		else if (random == 2) {
+			fill(colorA, colorB, colorC);
+			ellipse(x + 10, y + 10, 10, 10);
+			ellipse(x + 40, y + 40, 10, 10);
+		}
+		else if (random == 3) {
+			fill(colorA, colorB, colorC);
+			ellipse(x + 10, y + 10, 10, 10);
+			ellipse(x + 25, y + 25, 10, 10);
+			ellipse(x + 40, y + 40, 10, 10);
+		}
+		else if (random == 4) {
+			fill(colorA, colorB, colorC);
+			ellipse(x + 10, y + 10, 10, 10);
+			ellipse(x + 40, y + 10, 10, 10);
+			ellipse(x + 10, y + 40, 10, 10);
+			ellipse(x + 40, y + 40, 10, 10);
+		}
+		else if (random == 5) {
+			fill(colorA, colorB, colorC);
+			ellipse(x + 10, y + 10, 10, 10);
+			ellipse(x + 40, y + 10, 10, 10);
+			ellipse(x + 10, y + 40, 10, 10);
+			ellipse(x + 40, y + 40, 10, 10);
+			ellipse(x + 25, y + 25, 10, 10);
+		}
+		else if (random == 6) {
+			fill(colorA, colorB, colorC);
+			ellipse(x + 10, y + 10, 10, 10);
+			ellipse(x + 10, y + 25, 10, 10);
+			ellipse(x + 10, y + 40, 10, 10);
+			ellipse(x + 40, y + 10, 10, 10);
+			ellipse(x + 40, y + 25, 10, 10);
+			ellipse(x + 40, y + 40, 10, 10);
+		}
+	}
+	
+	getScore() {
+        this.z = this.totalScore;
+        this.totalScore = 0;
+		return this.z;
+	}
+		
+}
+const die = new Die(50, 50);
+var score;
+
 function setup() {
-  x = 600;
-  createCanvas(x, x);
+    createCanvas(400, 400);
+	background(0);
 }
 
 function draw() {
-  background(0);
-  var sqrSize = 55;
-  getRS();
-
-} 
-function getRS(){
-  noFill();
-  stroke(255, 0, 0);
-  strokeWeight(x/50);
-  
-  let alpha_val = [];
-  for (let i = 0; i <= 150; i++) {
-    append(alpha_val, i / 150);
-  }
-  
-  let colors = ['rgba(96, 60, 20,', 'rgba(156, 39, 6,', 'rgba(212, 91, 18,', 'rgba(243, 188, 46,', 'rgba(95, 84, 38,'];
-  
-  for (let i = 150; i > 0; i--) {
-    append(alpha_val, i / 150);
-  }
-  
-  stroke(colors[floor(frameCount / alpha_val.length) % 5] + str(alpha_val[frameCount % alpha_val.length]) + ')')
-  
-  
-  
-  triangle(x/4, x/8, x/2, x/4, x/5, x/2);
-  line(x/5, x/2, x/(400/65), x/(400/300));
-  line(x/5, x/2, x/(400/180), x/(400/300));
-  line(x/(400/180), x/(400/300), x/(400/350), x/4);
-  line(x/(400/350), x/4, x/(400/300), x/8);
-  line(x/(400/300), x/8, x/(400/250), x/4);
-  line(x/(400/250), x/4, x/(400/350), x/(400/250));
-  line(x/(400/350), x/(400/250), x/(400/300), x/(400/300));
-  line(x/(400/300), x/(400/300), x/2, x/2);
-  line(x/2, x/2, x, x/2);
+    if(frameCount % 25 == 0){
+      colorMode(HSB);
+      let colorA = (int) ((Math.random() * 360) + 1);
+      let colorB = (int) ((Math.random() * 100) + 1);
+      let colorC = (int) ((Math.random() * 100) + 1);
+      background(colorA, colorB, colorC);
+      for (var i = 0; i < 3; i++) {
+          for (var j = 0; j < 4; j++) {
+              die.show(j * 100 + 20, i * 100 + 50);
+          }
+          this.score = die.getScore();
+      }
+      textSize(32);
+      fill(0, 0, 100);
+      text("Total: ", 116, 385);
+      text("", 260, 385);
+      text(this.score, 210, 385);
+    }
 }
+
+function mousePressed() {
+	redraw();
+}
+
+ 
+
+
   
 </script>
 
         <div class="flexbox-container">
             <div class="flexbox-item-1">
-                This is a project that I made in class. It shows my initials along with a fading color effect, with fall colors. The hardest part of this project would probably have been the fading color effect. I managed to figure out a general algorithm for it, then I tried to implement it in my code. 
+                This is another project that I made in class. It shows a 12 dice in a 4 by 3 configuration. The hardest part of this project would probably have been making the dice class itself, and making sure that the pips will always be in the correct position relative to the dice. To fix the scaling with the dice I found the correct position for the pips for one dice, and then applied that to all the dice. 
             </div>
         </div>
     </div>
